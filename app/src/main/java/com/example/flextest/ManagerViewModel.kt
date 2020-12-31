@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ManagerViewModel: ViewModel() {
+class ManagerViewModel : ViewModel() {
 
     var mutableSelectedDataList = MutableLiveData<ArrayList<Data>>()
     var mutableUnselectedDataList = MutableLiveData<ArrayList<Data>>()
@@ -27,7 +27,7 @@ class ManagerViewModel: ViewModel() {
 
     }
 
-    fun removeSelectedData(data: Data, adapter: SelectedRecyclerViewAdapter){
+    fun removeSelectedData(data: Data, adapter: SelectedRecyclerViewAdapter) {
         mutableSelectedDataList.value?.let {
             it.remove(data)
             adapter.setData(it)
@@ -63,22 +63,22 @@ class ManagerViewModel: ViewModel() {
         mutableUnselectedDataList.value = unselectedDataList
     }
 
-    fun getSelectedData() : ArrayList<Data>?{
+    fun getSelectedData(): ArrayList<Data>? {
         return mutableSelectedDataList.value
     }
 
-    fun getUnselectedData() : ArrayList<Data>?{
+    fun getUnselectedData(): ArrayList<Data>? {
         return mutableUnselectedDataList.value
     }
 
-    fun addData(data: Data){
+    fun addSelectedData(data: Data) {
         selectedDataList.add(data)
         unselectedDataList.remove(data)
         mutableSelectedDataList.value = selectedDataList
         mutableUnselectedDataList.value = unselectedDataList
     }
 
-    fun removeData(data: Data){
+    fun removeData(data: Data) {
         selectedDataList.remove(data)
         unselectedDataList.add(data)
         mutableUnselectedDataList.value = unselectedDataList

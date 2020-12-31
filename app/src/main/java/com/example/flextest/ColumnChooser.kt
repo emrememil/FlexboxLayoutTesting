@@ -12,8 +12,8 @@ class ColumnChooser(context: Context) : View(context) {
         viewModel.setData(data)
     }
 
-    fun addData(data: Data){
-        viewModel.addData(data)
+    fun addToSelectedData(data: Data){
+        viewModel.addSelectedData(data)
     }
 
     fun getSelectedData(): ArrayList<Data>?{

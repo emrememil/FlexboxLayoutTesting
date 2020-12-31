@@ -1,10 +1,8 @@
 package com.example.flextest
 
+import android.animation.LayoutTransition
 import android.os.Bundle
-import android.view.ContextThemeWrapper
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -53,10 +51,11 @@ class AddDataDialog(
 
         adapter.setOnItemClickListener {
             //viewModel.addSelectedData(it,adapter)
-            columnChooser.addData(it)
+            columnChooser.addToSelectedData(it)
             mainAdapter.setData(columnChooser.getSelectedData())
             mainRecyclerView.adapter = mainAdapter
             addDataRecyclerView.adapter = adapter
+            addDataRecyclerContainer.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         }
     }
 

@@ -1,8 +1,8 @@
 package com.example.flextest
 
-import androidx.appcompat.app.AppCompatActivity
+import android.animation.LayoutTransition
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +11,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_field.view.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +35,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         fab.setOnClickListener {
             val dialog = AddDataDialog(chooser, adapter, recyclerView)
             val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
 //            adapter.setData(it)
 //            recyclerView.adapter = adapter
 //        })
-
 
         val itemTouchHelperCallback = object : ItemTouchHelper.Callback() {
             override fun getMovementFlags(
@@ -84,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
     }
-
     private fun setDataList(): ArrayList<Data> {
         val dataList = ArrayList<Data>()
         dataList.add(Fields.DATE)
@@ -116,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = SelectedRecyclerViewAdapter()
         recyclerView.adapter = adapter
-
+        linearContainer.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
 
     }
 
